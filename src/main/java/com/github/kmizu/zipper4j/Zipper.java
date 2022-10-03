@@ -79,7 +79,7 @@ public record Zipper<T>(SList<T> visit, SList<T> rest) {
     }
 
     public Zipper<T> filter(Predicate<T> predicate) {
-        return new Zipper<>(visit, rest.filter(predicate));
+        return new Zipper<>(visit.filter(predicate), rest.filter(predicate));
     }
 
     public <U> U foldLeft(U zero, BiFunction<U, T, U> function) {
